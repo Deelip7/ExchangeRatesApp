@@ -12,3 +12,13 @@
 
 //custom variables
 $secondary: #dedede;
+
+.form-login {
+  width: 500px;
+  background-color: darken($color: #fdbaba, $amount: 0);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
