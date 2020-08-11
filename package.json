@@ -1,0 +1,23 @@
+{
+  "name": "exchangeratesapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deelip7/ExchangeRatesApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deelip7/ExchangeRatesApp/issues"
+  },
+  "homepage": "https://github.com/Deelip7/ExchangeRatesApp#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "bootstrap-icons": "^1.0.0-alpha5"
+  }
+}
