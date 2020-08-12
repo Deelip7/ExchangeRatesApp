@@ -8,24 +8,42 @@
     <title>Exchange Rate App</title>
   </head>
   <body class="bg-dark">
-    <div class="container-x shadow mt-5">
+    <div class="container-x shadow">
+      <div class="numPad"></div>
+
       <form class="form-group text-center w-75">
         <!-- Current One input Fields -->
         <div class="currency">
           <img src="" alt="" id="currentOne__flag " />
 
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
+            <div class="input-group-prepend dropup">
               <button class="btn btn-outline-secondary dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true">
-                <!-- <img src="https://img.icons8.com/color/48/000000/usa.png" width="50px" height="50px" /> -->
                 <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD
               </button>
-              <div class="dropdown-menu w-100 border-white">
-                <a class="dropdown-item disabled" href="#">Select Country Below</a>
+              <div class="dropdown-menu border-white w-50 h-auto">
+                <a class="dropdown-item " href="#">
+                  <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD</a
+                >
+                <a class="dropdown-item " href="#">
+                  <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD</a
+                >
+                <a class="dropdown-item " href="#">
+                  <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD</a
+                >
+                <a class="dropdown-item  href="#">
+                  <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD</a
+                >
+
+                <a class="dropdown-item " href="#">
+                  <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD</a
+                >
+                <a class="dropdown-item active" href="#">
+                  <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="40px" height="40px" /> USD</a
+                >
+
                 <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item disabled" href="#">Select Country </a>
               </div>
             </div>
             <input type="text" class="form-control py-4" aria-label="Text input with dropdown button" />
@@ -36,15 +54,23 @@
           <img src="" alt="" id="currentTwo__flag" />
 
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
+            <div class="input-group-prepend dropup">
               <button class="btn btn-outline-secondary dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true">
                 <img src="https://img.icons8.com/color/48/000000/great-britain-circular.png" width="40px" height="40px" /> USD
               </button>
-              <div class="dropdown-menu w-100 border-white">
+              <div class="dropdown-menu border-white">
                 <a class="dropdown-item disabled" href="#">Select Country Below</a>
                 <div role="separator" class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="#">Another action</a>
                 <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Separated link</a>
                 <a class="dropdown-item" href="#">Separated link</a>
               </div>
             </div>
@@ -53,8 +79,7 @@
         </div>
       </form>
 
-      <button class="btnConvert px-5 py-3 w-50">Convert</button>
-      <div class="numPad"></div>
+      <button class="btnConvert px-5 py-3 w-50 mb-5">Convert</button>
     </div>
     <script src="app.js" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

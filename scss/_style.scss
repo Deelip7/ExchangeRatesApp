@@ -37,7 +37,6 @@ $secondary: #dedede;
   width: 411px;
   height: 487px;
   left: 0px;
-  top: 336px;
   background: #e5e5e5;
   box-shadow: inset 0px 11px 7px -5px rgba(0, 0, 0, 0.15);
 }
@@ -52,4 +51,11 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.dropdown-menu {
+  max-height: 300px; /* you can change as you need it */
+  overflow: auto;
+  scrollbar-color: #415eff #3a3261;
+  scrollbar-width: thin;
 }
