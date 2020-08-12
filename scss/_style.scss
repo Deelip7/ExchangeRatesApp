@@ -13,12 +13,43 @@
 //custom variables
 $secondary: #dedede;
 
-.form-login {
-  width: 500px;
-  background-color: darken($color: #fdbaba, $amount: 0);
+.container-x {
+  width: 411px;
+  height: 823px;
+  background-color: #3a3261;
   margin: auto;
   display: flex;
+  flex-flow: wrap;
   justify-content: center;
-  align-items: center;
-  flex-flow: column wrap;
+  align-items: flex-end;
+}
+
+.btnConvert {
+  // background: linear-gradient(90deg, #415eff -2.36%, #4965ff 103.94%);
+  background-color: #415eff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  outline: none !important;
+  color: #f4f4f4;
+  border: none;
+}
+.numPad {
+  width: 411px;
+  height: 487px;
+  left: 0px;
+  top: 336px;
+  background: #e5e5e5;
+  box-shadow: inset 0px 11px 7px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
