@@ -19,7 +19,7 @@ const display = document.querySelector(".displayResults");
 // });
 
 (function loadSelections() {
-  fetch("https://api.exchangeratesapi.io/latest?base=USD")
+  fetch("https://api.exchangeratesapi.io/latest?")
     .then((res) => res.json())
     .then((data) => {
       const dataKeys = Object.keys(data.rates);
@@ -33,6 +33,8 @@ const display = document.querySelector(".displayResults");
 })();
 
 document.querySelector("#covertBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+
   const from = currenyOne.options[currenyOne.selectedIndex].text;
   const to = currenyTwo.options[currenyTwo.selectedIndex].text;
 
@@ -45,9 +47,10 @@ document.querySelector("#covertBtn").addEventListener("click", (e) => {
       display.innerHTML = `<div class="card shadow-sm"> 
                             <div class="card-body w-100">
                                <div class="card-text h2">${finalkeys[0]} = ${finalValues[0]}</div>
-                               <div class="card-text h2"> ${from} - 1</div>
+                               <div class="card-text h2"> ${from} = 1</div>
                             </div>
                             <div class="card-footer mt-3 "> Date: ${data.date}</div>
                           </div>`;
-    });
+    })
+    .catch(() => console.log("Please try again"));
 });
