@@ -11,18 +11,17 @@ body {
 }
 body {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .container-x {
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
   width: 411px;
-  height: 400px;
-  padding: 50px 0;
+  min-height: 700px;
+  // height: auto;
+  padding: 0 0 30px 0;
   background-color: #3a3261;
   margin: auto;
   display: flex;
@@ -41,10 +40,9 @@ body {
 }
 
 .display {
-  width: 400px;
-  height: 400px;
-  margin: 20px 0;
-
+  width: 100%;
+  height: 350px;
+  margin-bottom: 50px;
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.25);
@@ -91,3 +89,9 @@ body {
 // .form-group {
 //   height: 50%;
 // }
+
+@media only screen and(min-width:650px) {
+  .container-x {
+    width: 500px;
+  }
+}
