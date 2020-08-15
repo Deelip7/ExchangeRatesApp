@@ -4,6 +4,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 //Global variables | Two <select>
 const currenyOne = document.querySelector("#country1");
 const currenyTwo = document.querySelector("#country2");
+const API_URL = "https://api.exchangeratesapi.io/latest?";
 /*
 /------------------------------------------------------------
 /   Classes
@@ -17,28 +18,26 @@ class ExchangeRate {
     this.amount = amount;
   }
 }
-
 class UpdateUI {
   //Populate <select> options with countries fatched from api
   static addCountryToList() {
     UpdateUI.clearInputField();
-    fetch("https://api.exchangeratesapi.io/latest?")
+    fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
         const dataKeys = Object.keys(data.rates);
         dataKeys.forEach((element) => {
           currenyOne.add(new Option(element)); // Add to options
           currenyTwo.add(new Option(element));
-          currenyOne.selectedIndex = "26"; // default currency on load
+          currenyOne.selectedIndex = "26"; // default currency on DOM load
           currenyTwo.selectedIndex = "15";
         });
       })
       .catch((err) => console.log("Please try again", err));
   }
-
   //Calculate Exchange rate using API data
   static calculateRate(currency) {
-    fetch(`https://api.exchangeratesapi.io/latest?base=${currency.from}&symbols=${currency.to}`) //Rates are quoted against ${from}.Request specific exchange rates by setting the symbols parameter.
+    fetch(`${API_URL}base=${currency.from}&symbols=${currency.to}`) //Rates are quoted against ${from}.Request specific exchange rates by setting the symbols parameter.
       .then((res) => res.json())
       .then((data) => {
         const finalValues = Object.values(data.rates); // Exchange rate
@@ -56,7 +55,7 @@ class UpdateUI {
           .format((finalValues[0] * currency.amount).toFixed(2))
           .replace(/^(\D+)/, "$1 ")}
       </div>
-      <div class="pt-3"> ECB Exchange rates: ${data.date}</div>
+      <div class="d-flex align-items-end justify-content-center pb-4 shadow-none"> ECB Exchange rates: ${data.date}</div>
       `;
       })
       .catch((err) => console.log("Something went wrong", err));
@@ -66,13 +65,11 @@ class UpdateUI {
     const countryOneTitle = document.querySelector(`#${targetID}`);
     countryOneTitle.innerHTML = `<img src="https://www.countryflags.io/${targetValue.slice(0, -1)}/flat/64.png"/" alt="" width="30px" height="30px" />`;
   }
-
   // Clear input field after button click
   static clearInputField() {
     // document.querySelector("#dollarAmount").value = "";
   }
 }
-
 /*
 /------------------------------------------------------------
 /   Events
@@ -84,7 +81,6 @@ class UpdateUI {
 document.addEventListener("DOMContentLoaded", UpdateUI.addCountryToList);
 document.addEventListener("click", (e) => {
   e.preventDefault();
-
   if (e.target.tagName.toLowerCase() === "option") {
     //Get <select> options value and id
     const selectValue = e.target.value; // Value
