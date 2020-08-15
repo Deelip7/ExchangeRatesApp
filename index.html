@@ -8,13 +8,13 @@
     <title>Exchange Rate App</title>
   </head>
   <body class="bg-dark">
-    <div class="container-x shadow">
+    <div class="wrapper shadow">
       <div class="display">
         <!-- <img src="/icons/Asset 1.svg" alt="" width="500px" height="400px" > -->
         <!-- <img src="/icons/54941.jpg" width="500px" height="400px" class="hidden"/ > -->
         <div class="displayResults w-75"></div>
       </div>
-      <form class="form-group text-center w-75 m-5">
+      <form class="form-group text-center w-75 mt-5">
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">Amount</span>
@@ -22,7 +22,7 @@
           <input type="number" class="form-control" aria-describedby="inputGroup-sizing-lg" placeholder="0.00000" aria-label="Amount" id="dollarAmount" />
         </div>
         <!-- Select  currency One -->
-        <div class="input-group input-group-lg mb-4 mt-4">
+        <div class="input-group input-group-lg  my-4">
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01" id="countryOnetitle"><img src="https://www.countryflags.io/US/flat/64.png"/" alt="" width="30px" height="30px" /> </label>
           </div>
@@ -37,7 +37,7 @@
           <select class="custom-select" id="country2"> </select>
         </div>
         <!-- Convert Button -->
-        <button class="btnConvert px-5 py-3 w-50 my-5 w-75" id="covertBtn">Convert</button>
+        <input class="btnConvert  py-3 my-4 w-50 h5" id="covertBtn" type="submit" value="Convert"></input>
       </form>
     </div>
     <script src="app.js" type="module"></script>

@@ -5,12 +5,11 @@
 /   Events
 /------------------------------------------------------------
 /   Populate <select> options with countries fatched from api
-/   IIFE to Update UI dynamically.
+/   IIFE to Update UI.
 */
 const currenyOne = document.querySelector("#country1");
 const currenyTwo = document.querySelector("#country2");
 const displayResults = document.querySelector(".displayResults");
-const display = document.querySelector(".display");
 
 (function loadSelections() {
   fetch("https://api.exchangeratesapi.io/latest?")
@@ -23,7 +22,8 @@ const display = document.querySelector(".display");
         currenyOne.selectedIndex = "26"; // default currency on load
         currenyTwo.selectedIndex = "15";
       });
-    });
+    })
+    .catch((err) => console.log("Please try again", err));
 })();
 
 /*
@@ -44,7 +44,7 @@ document.querySelector("#covertBtn").addEventListener("click", (e) => {
     .then((data) => {
       const finalValues = Object.values(data.rates); // Exchange rate
 
-      display.classList.add("display__show");
+      document.querySelector(".display").classList.add("display__show");
       displayResults.innerHTML = `
       <div class="card shadow-lg rounded-0"> 
         <div class="card-body">
@@ -66,7 +66,7 @@ document.querySelector("#covertBtn").addEventListener("click", (e) => {
       </div>
       <div class="card-footer bg-light w-100"> Date: ${data.date}</div>`;
     })
-    .catch(() => console.log("Please try again"));
+    .catch((err) => console.log("Something went wrong", err));
 });
 
 /*

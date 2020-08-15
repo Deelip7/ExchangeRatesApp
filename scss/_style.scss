@@ -13,21 +13,20 @@ body {
   height: 100%;
 }
 
-.container-x {
+.wrapper {
   position: absolute;
   right: 50%;
   bottom: 50%;
   transform: translate(50%, 50%);
   width: 95vw;
-  // min-height: 700px;
-  // height: auto;
-  padding: 0 0 30px 0;
+  max-height: 95%;
   background-color: #3a3261;
   margin: auto;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
 }
 
 .btnConvert {
@@ -53,7 +52,7 @@ body {
 }
 
 .display__show {
-  height: 350px;
+  height: 290px;
 }
 
 .display > img {
@@ -61,6 +60,7 @@ body {
   width: 100%;
   height: 100%;
 }
+//-------------------------------
 
 .custom-select {
   background-image: none !important;
@@ -84,10 +84,30 @@ input[type="number"] {
   border: none;
 }
 
-//-------------------
+/* Hide scrollbar for Chrome, Safari and Opera */
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.wrapper {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+//----------------------------------------------
 
 @media only screen and(min-width:650px) {
-  .container-x {
+  .wrapper {
     width: 500px;
+  }
+  .display__show {
+    height: 350px;
+  }
+}
+
+@media only screen and(max-height:670px) {
+  .display__show {
+    height: 100%;
+    width: 100%;
   }
 }
