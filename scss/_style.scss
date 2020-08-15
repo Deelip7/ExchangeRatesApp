@@ -18,7 +18,7 @@ body {
   right: 50%;
   bottom: 50%;
   transform: translate(50%, 50%);
-  width: 100vw;
+  width: 95vw;
   // min-height: 700px;
   // height: auto;
   padding: 0 0 30px 0;
@@ -45,7 +45,6 @@ body {
   height: 0px;
   border-radius: 5px;
   background: #613259;
-  // box-shadow: 7px 4px 4px 1px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -55,7 +54,6 @@ body {
 
 .display__show {
   height: 350px;
-  margin-bottom: 50px;
 }
 
 .display > img {
@@ -67,6 +65,23 @@ body {
 .custom-select {
   background-image: none !important;
   -webkit-appearance: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control {
+  background-clip: border-box !important;
+  border: none;
 }
 //-------------------
 

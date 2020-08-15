@@ -37,21 +37,32 @@ document.querySelector("#covertBtn").addEventListener("click", (e) => {
   e.preventDefault();
   const from = currenyOne.options[currenyOne.selectedIndex].text;
   const to = currenyTwo.options[currenyTwo.selectedIndex].text;
+  const amount = document.querySelector("#dollarAmount").value;
 
   fetch(`https://api.exchangeratesapi.io/latest?base=${from}&symbols=${to}`) //Rates are quoted against ${from}.Request specific exchange rates by setting the symbols parameter.
     .then((res) => res.json())
     .then((data) => {
-      const finalkeys = Object.keys(data.rates); // country name.
       const finalValues = Object.values(data.rates); // Exchange rate
 
       display.classList.add("display__show");
-      displayResults.innerHTML = `<div class="card shadow-lg"> 
-      <div class="card-body w-100">
-      <div class="card-text h2"><img src="https://www.countryflags.io/${from.slice(0, -1)}/flat/64.png" / > ${from} = 1</div>
-      <div class="card-text h2"><img src="https://www.countryflags.io/${to.slice(0, -1)}/flat/64.png"/ > ${finalkeys[0]} = ${finalValues[0]}</div>
+      displayResults.innerHTML = `
+      <div class="card shadow-lg rounded-0"> 
+        <div class="card-body">
+        <div class="card-text h4">
+            <img src="https://www.countryflags.io/${from.slice(0, -1)}/flat/64.png"/ > - 
+            ${new Intl.NumberFormat("USD", { style: "currency", currency: from }).format(amount)}
+        </div>
+        <div class="card-text h4 text-center"> </div>
+        <div class="card-text h4 ">
+            <img src="https://www.countryflags.io/${to.slice(0, -1)}/flat/64.png"/ > - ${new Intl.NumberFormat("USD", {
+        style: "currency",
+        currency: to,
+      }).format((finalValues[0] * amount).toFixed(2))}
+        </div>
+        </div>    
+      
       </div>
-      <div class="card-footer mt-3 "> Date: ${data.date}</div>
-      </div>`;
+      <div class="card-footer bg-light w-100"> Date: ${data.date}</div>`;
     })
     .catch(() => console.log("Please try again"));
 });

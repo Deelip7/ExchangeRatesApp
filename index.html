@@ -12,12 +12,17 @@
       <div class="display">
         <!-- <img src="/icons/Asset 1.svg" alt="" width="500px" height="400px" > -->
         <!-- <img src="/icons/54941.jpg" width="500px" height="400px" class="hidden"/ > -->
-        <div class="displayResults"></div>
+        <div class="displayResults w-75"></div>
       </div>
-      <form class="form-group text-center w-50 mt-5">
-        <!-- Convert Button -->
+      <form class="form-group text-center w-75 m-5">
+        <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">$</span>
+          </div>
+          <input type="number" class="form-control" aria-describedby="inputGroup-sizing-lg" placeholder="0.00000" aria-label="Amount" id="dollarAmount" />
+        </div>
         <!-- Select  currency One -->
-        <div class="input-group-lg mb-5 mt-3">
+        <div class="input-group-lg mb-4 mt-4">
           <select class="custom-select" id="country1">
             <option value="1" disabled>Select A Currency</option>
           </select>
@@ -28,6 +33,7 @@
             <option value="1" disabled>Select A Currency</option>
           </select>
         </div>
+        <!-- Convert Button -->
         <button class="btnConvert px-5 py-3 w-50 my-5 w-75" id="covertBtn">Convert</button>
       </form>
     </div>
