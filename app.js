@@ -67,7 +67,7 @@ class UpdateUI {
   }
   // Clear input field after button click
   static clearInputField() {
-    // document.querySelector("#dollarAmount").value = "";
+    document.querySelector("#dollarAmount").value = "";
   }
 }
 /*
