@@ -20,8 +20,8 @@ const display = document.querySelector(".display");
       dataKeys.forEach((element) => {
         currenyOne.add(new Option(element)); // Add to options
         currenyTwo.add(new Option(element));
-        currenyOne.selectedIndex = "27"; // default currency on load
-        currenyTwo.selectedIndex = "12";
+        currenyOne.selectedIndex = "26"; // default currency on load
+        currenyTwo.selectedIndex = "15";
       });
     });
 })();
@@ -49,15 +49,17 @@ document.querySelector("#covertBtn").addEventListener("click", (e) => {
       <div class="card shadow-lg rounded-0"> 
         <div class="card-body">
         <div class="card-text h4">
-            <img src="https://www.countryflags.io/${from.slice(0, -1)}/flat/64.png"/ > - 
-            ${new Intl.NumberFormat("USD", { style: "currency", currency: from }).format(amount)}
+            <img src="https://www.countryflags.io/${from.slice(0, -1)}/flat/64.png" / > - 
+            ${new Intl.NumberFormat("USD", { style: "currency", currency: from }).format(amount).replace(/^(\D+)/, "$1 ")}
         </div>
         <div class="card-text h4 text-center"> </div>
         <div class="card-text h4 ">
-            <img src="https://www.countryflags.io/${to.slice(0, -1)}/flat/64.png"/ > - ${new Intl.NumberFormat("USD", {
+            <img src="https://www.countryflags.io/${to.slice(0, -1)}/flat/64.png"/> - ${new Intl.NumberFormat("USD", {
         style: "currency",
         currency: to,
-      }).format((finalValues[0] * amount).toFixed(2))}
+      })
+        .format((finalValues[0] * amount).toFixed(2))
+        .replace(/^(\D+)/, "$1 ")}
         </div>
         </div>    
       
@@ -66,3 +68,21 @@ document.querySelector("#covertBtn").addEventListener("click", (e) => {
     })
     .catch(() => console.log("Please try again"));
 });
+
+/*
+/------------------------------------------------------------
+/   Events
+/------------------------------------------------------------
+/   when <select> options is "click" -> pass itto addFlags functions (country name , e.target.id)
+/   
+*/
+document.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "option") {
+    addFlags(e.target.value, e.target.parentElement.previousSibling.previousSibling.children[0].id);
+  }
+});
+
+function addFlags(flagName, targetID) {
+  const countryOneTitle = document.querySelector(`#${targetID}`);
+  countryOneTitle.innerHTML = `<img src="https://www.countryflags.io/${flagName.slice(0, -1)}/flat/64.png"/" alt="" width="30px" height="30px" />`;
+}
