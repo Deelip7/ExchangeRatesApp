@@ -2,8 +2,8 @@
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 //Global variables | Two <select>
-const currenyOne = document.querySelector("#country1");
-const currenyTwo = document.querySelector("#country2");
+const currenyOne = document.getElementById("country1");
+const currenyTwo = document.getElementById("country2");
 const API_URL = "https://api.exchangeratesapi.io/latest?";
 /*
 /------------------------------------------------------------
@@ -44,7 +44,7 @@ class UpdateUI {
         document.querySelector(".display").classList.add("display__show");
         document.querySelector(".display").innerHTML = `
       <div class="card-text h4 ">
-         <img src="https://www.countryflags.io/${currency.from.slice(0, -1)}/flat/64.png" / > -
+         <img src="https://www.countryflags.io/${currency.from.slice(0, -1)}/flat/64.png"/> -
          ${new Intl.NumberFormat("USD", { style: "currency", currency: currency.from }).format(currency.amount).replace(/^(\D+)/, "$1 ")}
       </div>
       <div class="card-text h4 ">
@@ -62,14 +62,15 @@ class UpdateUI {
   }
 
   static addFlags(targetValue, targetID) {
-    const countryOneTitle = document.querySelector(`#${targetID}`);
-    countryOneTitle.innerHTML = `<img src="https://www.countryflags.io/${targetValue.slice(0, -1)}/flat/64.png"/" alt="" width="30px" height="30px" />`;
+    const lableInner = targetID.parentElement.children[0].children[0];
+    lableInner.innerHTML = `<img src="https://www.countryflags.io/${targetValue.slice(0, -1)}/flat/64.png" alt="" width="30px" height="30px" />`;
   }
   // Clear input field after button click
   static clearInputField() {
-    document.querySelector("#dollarAmount").value = "";
+    // document.getElementById("dollarAmount").value = "";
   }
 }
+
 /*
 /------------------------------------------------------------
 /   Events
@@ -81,15 +82,9 @@ class UpdateUI {
 document.addEventListener("DOMContentLoaded", UpdateUI.addCountryToList);
 document.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target.tagName.toLowerCase() === "option") {
-    //Get <select> options value and id
-    const selectValue = e.target.value; // Value
-    const selectId = e.target.parentElement.previousSibling.previousSibling.children[0].id; //id
-    // pass value and id to addFlags();
-    UpdateUI.addFlags(selectValue, selectId);
-  } else if (e.target.id === "covertBtn") {
+  if (e.target.id === "covertBtn") {
     //If covertBtn btn is "click" => get <option> values
-    const amount = document.querySelector("#dollarAmount").value;
+    const amount = document.getElementById("dollarAmount").value;
     const from = currenyOne.options[currenyOne.selectedIndex].text;
     const to = currenyTwo.options[currenyTwo.selectedIndex].text;
 
@@ -104,4 +99,21 @@ document.addEventListener("click", (e) => {
       UpdateUI.calculateRate(currency);
     }
   }
+});
+
+// <Select> lable changes flags based on user seletions.
+let elements = document.getElementsByTagName("select");
+Object.keys(elements).forEach((e) => {
+  elements[e].addEventListener("change", function () {
+    //Get <select> options value and id
+    if (e === "0") {
+      const selectedId = country1; //id
+      const selectedValue = selectedId.options[selectedId.selectedIndex].value; // Value
+      UpdateUI.addFlags(selectedValue, selectedId);
+    } else {
+      const selectedId = country2; //id
+      const selectedValue = selectedId.options[selectedId.selectedIndex].value; // Value
+      UpdateUI.addFlags(selectedValue, selectedId); // pass value and id to addFlags();
+    }
+  });
 });
