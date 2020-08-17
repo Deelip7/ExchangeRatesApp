@@ -61,13 +61,14 @@ class UpdateUI {
       .catch((err) => console.log("Something went wrong", err));
   }
 
+  // <select> lable changes base on user input. Add flag images.
   static addFlags(targetValue, targetID) {
     const lableInner = targetID.parentElement.children[0].children[0];
-    lableInner.innerHTML = `<img src="https://www.countryflags.io/${targetValue.slice(0, -1)}/flat/64.png" alt="" width="30px" height="30px" />`;
+    lableInner.innerHTML = `<img src="https://www.countryflags.io/${targetValue.slice(0, -1)}/flat/64.png" alt="" width="30px" height="30px" />`; //Insert Flags img
   }
   // Clear input field after button click
   static clearInputField() {
-    // document.getElementById("dollarAmount").value = "";
+    document.getElementById("dollarAmount").value = "";
   }
 }
 
@@ -107,13 +108,11 @@ Object.keys(elements).forEach((e) => {
   elements[e].addEventListener("change", function () {
     //Get <select> options value and id
     if (e === "0") {
-      const selectedId = country1; //id
-      const selectedValue = selectedId.options[selectedId.selectedIndex].value; // Value
-      UpdateUI.addFlags(selectedValue, selectedId);
+      const selectedValue = country1.options[country1.selectedIndex].value; // select option Value
+      UpdateUI.addFlags(selectedValue, country1);
     } else {
-      const selectedId = country2; //id
-      const selectedValue = selectedId.options[selectedId.selectedIndex].value; // Value
-      UpdateUI.addFlags(selectedValue, selectedId); // pass value and id to addFlags();
+      const selectedValue = country2.options[country2.selectedIndex].value;
+      UpdateUI.addFlags(selectedValue, country2); // pass value and id to addFlags();
     }
   });
 });
