@@ -47,7 +47,7 @@ class UpdateUI {
          <img src="https://www.countryflags.io/${currency.from.slice(0, -1)}/flat/64.png"/> -
          ${new Intl.NumberFormat("USD", { style: "currency", currency: currency.from }).format(currency.amount).replace(/^(\D+)/, "$1 ")}
       </div>
-      <div class="card-text h4 ">
+      <div class="card-text h4 mt-2">
         <img src="https://www.countryflags.io/${currency.to.slice(0, -1)}/flat/64.png"/> - ${new Intl.NumberFormat("USD", {
           style: "currency",
           currency: currency.to,
@@ -55,7 +55,7 @@ class UpdateUI {
           .format((finalValues[0] * currency.amount).toFixed(2))
           .replace(/^(\D+)/, "$1 ")}
       </div>
-      <div class="d-flex align-items-end justify-content-center pb-4 shadow-none"> ECB Exchange rates: ${data.date}</div>
+      <div class="d-flex align-items-end justify-content-center pt-5 shadow-none"> ECB Exchange rates: ${data.date}</div>
       `;
       })
       .catch((err) => console.log("Something went wrong", err));
